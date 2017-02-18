@@ -1,0 +1,16 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    if (s === '') return 0;
+    var len = s.length, l = len, RErepeat = /(.).*\1/;
+    while (l > 1) {
+        for (var i = 0; i < len - l + 1; i++) {
+            var temp = s.substr(i, l);
+            if (!RErepeat.test(temp)) return temp.length;
+        }
+        l--;
+    }
+    if (l === 1) return 1;
+};
